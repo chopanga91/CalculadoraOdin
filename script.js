@@ -19,8 +19,19 @@ const restar = function(a, b) {
 };
 //FUNCION OPERATIVA
   const operar = function(operacion, a, b){
-
-    return operacion(a, b);
+    switch (operacion) {
+      case "+":
+        return a + b;
+        break;
+      case "-":
+        return a - b;
+        break;
+      case "x":
+        return a * b;
+      case "/":
+        return a / b;
+        break;
+    }
 };
 
 
@@ -45,10 +56,10 @@ return displayValue;
 //INTENTANDO HACER UNA FUNCION QUE LEA EL DISPLAY Y PUEDA OPERAR
 
 function convertirDisplayAOperacion(){
-  let segundoNumero;
-  let primerNumero;
+  let segundoNumero = 0;
+  let primerNumero = 0;
   let displayArray = display.innerHTML.split("");
-  let displayArrayNumerico = [];
+  // let displayArrayNumerico = [];
 
   // for(let i = 0; i < displayArray.length ; i++){
     
@@ -63,7 +74,7 @@ function convertirDisplayAOperacion(){
       tipoDeOperacion = displayArray[i];
       i++;
       for(i ; i < displayArray.length ; i++) {
-        segundoNumero += displayArray[i];
+        segundoNumero += (displayArray[i]);
       }
       break;
       }
@@ -77,10 +88,11 @@ function convertirDisplayAOperacion(){
   // while( !isNaN(displayArray.pop())){
   //    primerNumero = primerNumero + parseInt(displayArray.pop());
   // }
+  console.log(primerNumero);
   console.log(segundoNumero);
   console.log(tipoDeOperacion);
-  console.log(primerNumero);
-  return
+  display.innerHTML = operar(tipoDeOperacion, parseInt(primerNumero), parseInt(segundoNumero));
+  return operar(tipoDeOperacion, parseInt(primerNumero), parseInt(segundoNumero));
 }
 
 
